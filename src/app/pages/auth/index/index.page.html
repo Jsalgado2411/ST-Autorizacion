@@ -1,0 +1,76 @@
+<div class="ion-page">
+
+  <!-- <app-header title="Autorizaciones">
+    <ion-button *ngIf="isSelecting" (click)="deseleccionarTodos()">Deseleccionar Todos</ion-button>
+  </app-header> -->
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Autorizaciones</ion-title>
+      <ion-button *ngIf="selectedTarjetas.length > 0" (click)="deseleccionarTodos()">Deseleccionar Todos</ion-button>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-searchbar placeholder="Buscar Autorizacion" [debounce]="250" (ionInput)="handleInput($event)" position="floating" animated></ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <ion-label>Apartado</ion-label>
+      <ion-select multiple="false" placeholder="Apartado" [(ngModel)]="selectedOption">
+        <ion-select-option value="Pendientes">Autorizaciones Pendientes</ion-select-option>
+        <ion-select-option value="Pagos" *ngIf="IndexDatos.rol === '3'">Pendientes de Pago</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  
+  
+  <ion-content class="ion-padding">
+
+    <div *ngIf="selectedTarjetas.length > 0" class="action-buttons">
+      <ion-button (click)="autorizarSeleccionadas()" size="small">Autorizar</ion-button>
+      <ion-button (click)="rechazar()" size="small">Rechazar</ion-button>
+    </div>
+    
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+      <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Recargando..."></ion-refresher-content>
+    </ion-refresher>
+    
+    
+    <div *ngIf="selectedOption === 'Pendientes'">
+      <ion-card *ngFor="let tarjeta of Tarjetas; let i = index" [ngClass]="selectedTarjetas.includes(tarjeta)? 'selected-card' : ''" (click)="handleCardClick(tarjeta, i)" (touchstart)="handleLongPress(tarjeta)" (touchend)="handleCardTouchEnd()">
+        <div *ngIf="tarjeta.origen_tipo === '2'">
+          <ion-card-header>
+            <ion-card-subtitle>Autorizacion de {{tarjeta.fecha_creacion | date : 'dd-MM-yyyy'}}</ion-card-subtitle>
+            <ion-card-title>Tipo de Autorizacion: {{tarjeta.origen_tipo === "2" ? 'ANTICIPO' : 'VIATICOS'}}</ion-card-title>        
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '2' && tarjeta.concepto">Concepto: {{tarjeta.concepto}}</ion-card-title>
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '2' && tarjeta.cliente">Cliente: {{tarjeta.cliente}}</ion-card-title>          
+          </ion-card-header>
+        </div>
+      </ion-card>      
+      <ion-card *ngFor="let tarjeta of Tarjetas; let i = index" [ngClass]="selectedTarjetas.includes(tarjeta)? 'selected-card' : ''" (click)="handleCardClick(tarjeta, i)" (touchstart)="handleLongPress(tarjeta)" (touchend)="handleCardTouchEnd()">
+        <div *ngIf="tarjeta.origen_tipo === '1'">
+          <ion-card-header>
+            <ion-card-subtitle>Autorizacion de {{tarjeta.fecha_creacion | date : 'dd-MM-yyyy'}}</ion-card-subtitle>
+            <ion-card-title>Tipo de Autorizacion: {{tarjeta.origen_tipo === "1" ? 'VIATICOS' : 'ANTICIPO'}}</ion-card-title>
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '1' && tarjeta.empleado">Empleado: {{tarjeta.empleado}}</ion-card-title>       
+          </ion-card-header>
+        </div>
+      </ion-card>
+    </div>
+    <div *ngIf="selectedOption === 'Pagos'">
+      <!-- <ion-card *ngFor="let tarjeta of Tarjetas; let i = index" id="open-modal" (click)="abrirModal(i)">
+        <div *ngIf="tarjeta.origen_tipo === '1'">
+          <ion-card-header>
+            <ion-card-subtitle>Autorizacion de {{tarjeta.fecha_creacion | date : 'dd-MM-yyyy'}}</ion-card-subtitle>
+            <ion-card-title>Tipo de Autorizacion: {{tarjeta.origen_tipo === "1" ? 'VIATICOS' : 'ANTICIPO'}}</ion-card-title>
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '1' && tarjeta.empleado">Empleado: {{tarjeta.empleado}}</ion-card-title>       
+          </ion-card-header>
+        </div>
+      </ion-card> -->
+
+      Soy un pago
+    </div> 
+  </ion-content>
+</div>

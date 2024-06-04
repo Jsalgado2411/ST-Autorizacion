@@ -1,0 +1,21 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="index" href="index">
+      <ion-icon aria-hidden="true" name="bag-check-outline"></ion-icon>
+      <ion-badge color="secondary" mode="ios">{{ totalTarjetas }}</ion-badge>
+      <ion-label>Pendientes</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="historico" href="historico">
+      <ion-icon aria-hidden="true" name="receipt-outline"></ion-icon>
+      <!-- <ion-badge color="secondary" mode="ios"></ion-badge> -->
+      <ion-label>Histórico</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="configuracion" href="configuracion">
+      <ion-icon aria-hidden="true" name="cog-outline"></ion-icon>
+      <ion-label>Configuración</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

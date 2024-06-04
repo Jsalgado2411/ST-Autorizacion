@@ -1,0 +1,15 @@
+.signature-pad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto; /* Cambiado a auto para que se ajuste al contenido */
+  }
+  
+//   .signature-pad-canvas {
+//     width: 90vw; /* Cambiado a vw (viewport width) para que sea relativo al ancho de la ventana */
+//     max-width: 500px; /* Puedes ajustar el máximo si deseas */
+//     height: auto; /* Cambiado a auto para mantener la proporción */
+//     max-height: 70vh; /* Puedes ajustar el máximo si deseas */
+//   }
+  

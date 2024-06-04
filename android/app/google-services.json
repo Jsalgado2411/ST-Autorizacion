@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "311162476939",
+    "project_id": "app-controlautorizaciones",
+    "storage_bucket": "app-controlautorizaciones.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311162476939:android:61bb73257f0d67c5ef378e",
+        "android_client_info": {
+          "package_name": "com.supertrack.controlautorizacion"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClp2WBfcPyRurIh1Ouh-p-irUqvApO7yA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311162476939:android:74b16f5ea239f699ef378e",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClp2WBfcPyRurIh1Ouh-p-irUqvApO7yA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

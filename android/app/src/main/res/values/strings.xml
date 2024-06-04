@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Autorizaciones | Supertrack</string>
+    <string name="title_activity_main">Autorizaciones | Supertrack</string>
+    <string name="package_name">com.supertrack.controlautorizacion</string>
+    <string name="custom_url_scheme">com.supertrack.controlautorizacion</string>
+</resources>

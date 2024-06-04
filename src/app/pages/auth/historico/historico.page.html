@@ -1,0 +1,112 @@
+<div class="ion-page">
+  <app-header title="Histórico"></app-header>
+  
+  <ion-searchbar placeholder="Buscar Autorizacion" [debounce]="250" (ionInput)="handleInput($event)" animated position="floating"></ion-searchbar>
+  <ion-list>
+    <ion-item>
+      <ion-label>Apartado</ion-label>
+      <ion-select multiple="false" placeholder="Apartado" [(ngModel)]="selectedOption">
+        <ion-select-option value="Pendientes">Autorizaciones Realizadas</ion-select-option>
+        <ion-select-option value="Pagos" *ngIf="todasTarjetasConViaticosIgualesACero">Pendientes de Pago</ion-select-option>
+      </ion-select>
+    </ion-item>  
+  </ion-list>
+
+  
+  <ion-content class="ion-padding">
+    <ion-grid fixed>
+
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item>
+            <ion-label>Terminal</ion-label>
+            <ion-select [(ngModel)]="selectedCountry">
+              <ion-select-option *ngFor="let terminal of terminals.result" [value]="terminal">{{ terminal.nom_terminal }}</ion-select-option>
+            </ion-select>
+          </ion-item>      
+        </ion-col>        
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item *ngIf="selectedCountry && selectedDate">
+            <ion-label>Fecha Inicial</ion-label>
+            <ion-select [(ngModel)]="selectedDate" (ionChange)="handleDateChange($event)">
+              <ion-select-option [value]="selectedDate">{{ selectedDate | date:'dd/MM/YYYY' }}</ion-select-option>
+              <ion-select-option value="selectNew">Seleccionar nueva fecha</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="selectedCountry && !selectedDate">
+            <ion-item>
+              <ion-label>Fecha Inicial</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDate" [min]="minDate" [max]="maxDate"></ion-datetime>
+            </ion-item>            
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size="12">
+          <ion-item *ngIf="selectedCountry && selectedDateFinal">
+            <ion-label>Fecha Inicial</ion-label>
+            <ion-select [(ngModel)]="selectedDateFinal" (ionChange)="handleDateChange2($event)">
+              <ion-select-option [value]="selectedDateFinal">{{ selectedDateFinal | date:'dd/MM/YYYY' }}</ion-select-option>
+              <ion-select-option value="selectNew">Seleccionar nueva fecha</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="selectedCountry && !selectedDateFinal">
+            <ion-item>
+              <ion-label>Fecha Final</ion-label>
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="selectedDateFinal" [min]="minDate" [max]="maxDate"></ion-datetime>
+            </ion-item>            
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      
+
+
+    </ion-grid>
+
+    <ion-label *ngIf="showRefreshLabel">Desliza hacia abajo para cargar historicos</ion-label>
+
+    <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)" pullFactor="0.8" pullMin="60" pullMax="120">
+      <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Recargando..."></ion-refresher-content>
+    </ion-refresher>
+  
+    <div *ngIf="selectedOption === 'Pendientes'">
+      <ion-card *ngFor="let tarjeta of tarjetasDemo; let i = index" id="open-modal" (click)="abrirModal(i)">
+        <div *ngIf="tarjeta.origen_tipo === '2'">
+          <ion-card-header>
+            <ion-card-subtitle>Autorizacion de {{tarjeta.fecha_creacion | date : 'dd-MM-yyyy'}}</ion-card-subtitle>
+            <ion-card-title>Tipo de Autorizacion: {{tarjeta.origen_tipo === "2" ? 'ANTICIPO' : 'VIATICOS'}}</ion-card-title>        
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '2' && tarjeta.concepto">Concepto: {{tarjeta.concepto}}</ion-card-title>
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '2' && tarjeta.cliente">Cliente: {{tarjeta.cliente}}</ion-card-title>          
+          </ion-card-header>
+        </div>
+      </ion-card>      
+    </div>
+
+    <div *ngIf="selectedOption === 'Pagos'">      
+      <ion-card *ngFor="let tarjeta of tarjetasDemo; let i = index" id="open-modal" (click)="abrirModal(i)">
+        <div *ngIf="tarjeta.origen_tipo === '1'">
+          <ion-card-header>
+            <ion-card-subtitle>Autorizacion de {{tarjeta.fecha_creacion | date : 'dd-MM-yyyy'}}</ion-card-subtitle>
+            <ion-card-title>Tipo de Autorizacion: {{tarjeta.origen_tipo === "1" ? 'VIATICOS' : 'ANTICIPO'}}</ion-card-title>
+            <ion-card-title *ngIf="tarjeta.origen_tipo === '1' && tarjeta.empleado">Empleado: {{tarjeta.empleado}}</ion-card-title>       
+          </ion-card-header>
+        </div>
+      </ion-card>
+      <!-- <ion-label>HOLA SOY UN PAGO</ion-label> -->
+    </div>
+
+    <ion-infinite-scroll threshold="100px" (ionInfinite)="onIonInfinite()">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </ion-content>
+
+</div>

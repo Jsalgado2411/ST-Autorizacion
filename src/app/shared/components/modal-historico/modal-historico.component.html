@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historico de Autorizaciónes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()" color="primary">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <p>Informacion de la tarjeta: {{ tarjeta | json }}</p> -->
+  <ion-item>
+    <ion-label>
+      Poliza CB: {{tarjeta.POLIZA_CB}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Poliza CXP: {{tarjeta.POLIZA_CXP}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Area: {{tarjeta.area}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autoriza Diesel: {{tarjeta.autoriza_diesel}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autoriza grat: {{tarjeta.autoriza_grat}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autoriza Jefe: {{tarjeta.autoriza_jefe}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Cliente: {{tarjeta.cliente}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Concepto: {{tarjeta.concepto}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Cuenta Bancaria: {{tarjeta.cuenta_banc}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Empleado: {{tarjeta.empleado}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Fecha Autorizacion: {{tarjeta.fecha_auth | date: 'dd-MM-yyyy'}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Fecha Autorizacion Pago: {{tarjeta.fecha_autorizo_pago | date: 'dd-MM-yyyy'}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Fecha Creacion: {{tarjeta.fecha_creacion | date: 'dd-MM-yyyy'}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Folio: {{tarjeta.folio}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      ID: {{tarjeta.id}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Monto: {{tarjeta.monto}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autorizo: {{tarjeta.nombre_autorizo}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autorizo Pago: {{tarjeta.nombre_autorizo_pago}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Origen: {{tarjeta.origen_tipo === "1" ? 'VIATICOS' : 'ANTICIPO'}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Pin Jefe: {{tarjeta.pin_jefe}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autorizacion Diesel: {{tarjeta.requiere_auth_diesel}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autorizacion Gratificacion: {{tarjeta.requiere_auth_gratificacion}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Autorizacion Jefe: {{tarjeta.requiere_auth_jefe}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Estatus: {{tarjeta.status}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Estatus Pago: {{tarjeta.statusPagos}}
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      Terminal: {{tarjeta.terminal}}
+    </ion-label>
+  </ion-item>  
+</ion-content>
+

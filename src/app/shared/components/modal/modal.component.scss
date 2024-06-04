@@ -1,0 +1,36 @@
+.signature-pad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .signature-pad-canvas {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: auto;
+    height: 400;
+  }
+  #clienteLabel {
+    font-size: 20px; /* Tamaño de fuente más grande para la etiqueta con ID 'clienteLabel' */
+  }
+  #ConceptoLabel{
+    font-size: 20px;
+  }
+  #EmpleadoLabel{
+    font-size: 20px;
+  }
+  #FCreacionLabel{
+    font-size: 20px;
+  }
+  #FolioLabel{
+    font-size: 20px;
+  }
+  #MontoLabel{
+    font-size: 20px;
+  }
+  #OrigenLabel{
+    font-size: 20px;
+  }
+  #TerminalLabel{
+    font-size: 20px;
+  }

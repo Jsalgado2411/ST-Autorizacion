@@ -1,0 +1,12 @@
+.authorize{
+    margin-top: 2rem;
+    ion-button.faceid{
+        --background: linear-gradient(to bottom, #9eeafd, #006de9);
+    }
+    ion-text{
+        font-size: 0.9rem;
+        span{
+            font-size: 0.8rem;
+        }
+    }
+}
